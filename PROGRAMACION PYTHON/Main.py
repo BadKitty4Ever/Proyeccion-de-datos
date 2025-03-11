@@ -1,7 +1,7 @@
 import tkinter
 from Views.headerView import header_view
 from Views.formView import formulario_view
-#from Cargar_tabla import actualizarTabla
+
 
 #-------------------------------------------------------------------------------
 
