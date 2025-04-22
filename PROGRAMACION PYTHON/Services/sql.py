@@ -1,8 +1,5 @@
 def conectar(consulta_sql):
-
-    import mysql.connector
-
-    # Configuracion de conexion 
+    import mysql.connector 
 
     config = {
         'user':'uuwzz1ups71lzb72',
@@ -11,8 +8,6 @@ def conectar(consulta_sql):
         'database':'be0g17yb6tf4vnwbpikh',
         'raise_on_warnings': True
     }
-
-    # Connectar a una base de datos
 
     try: 
         conexion = mysql.connector.connect(**config)
