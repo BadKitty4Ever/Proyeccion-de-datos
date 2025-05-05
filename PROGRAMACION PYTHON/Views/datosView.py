@@ -5,7 +5,6 @@ from Services.sql import conectar
 #__________________________________________________________________--
 
 def actualizarTabla(consulta_sql, panel):
-    print("hola")
     consulta = conectar(consulta_sql)
 
     for widget in panel.winfo_children():

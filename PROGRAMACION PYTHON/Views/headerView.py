@@ -7,7 +7,7 @@ def header_view(ventana):
     header_panel.grid(row=0,column=0,columnspan=2,sticky="nsew")
 
     imagen = Image.open(r"C:\Users\josea\OneDrive\Desktop\PROGRAMACION PYTHON\Money.jpeg")
-    imagen = imagen.resize((80, 80))
+    imagen = imagen.resize((100, 100))
     logo = ImageTk.PhotoImage(imagen)
 
     label_logo = tkinter.Label(header_panel, image=logo, bg="white")
