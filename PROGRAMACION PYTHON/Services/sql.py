@@ -11,14 +11,18 @@ def conectar(consulta_sql):
 
     try: 
         conexion = mysql.connector.connect(**config)
-        print("Conexion exitosa a la base de datos.")
+        print("✅ Conexión exitosa a la base de datos.")
 
         consultas = conexion.cursor()
-
+        print("🔍 Consulta que se va a ejecutar:", consulta_sql)
         consultas.execute(consulta_sql)
         resultado = consultas.fetchall()
 
+        consultas.close()
+        conexion.close()
         return resultado
 
     except mysql.connector.Error as err:
+        print(f"💀 Error al conectarse o ejecutar la consulta: {err}")
         print(f"Error al conectarse a la base de datos: {err}")
+

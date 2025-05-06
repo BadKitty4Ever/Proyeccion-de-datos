@@ -2,32 +2,36 @@ import tkinter
 from tkinter import ttk
 from Services.sql import conectar
 
-#__________________________________________________________________--
+#______________________Actualizar_Tabla____________________________
 
 def actualizarTabla(consulta_sql, panel):
-    consulta = conectar(consulta_sql)
+    datos = conectar(consulta_sql)
 
     for widget in panel.winfo_children():
         widget.destroy()
 
-    #Datos ejemplo
     columnas = ("ID","Genero","Nombre","Placa","Color","Modelo","Hora Entrada","Hora Salida","Tarifa","Carwash")
-    crear_tabla(panel,columnas,consulta)
+    crear_tabla(panel, columnas, datos)
 
-#__________________________________________________________________--
+#__________________Crear_Tabla_____________________________________
 
 def crear_tabla(panel, columnas, datos):
-    # Crear el Treeview
     tabla = ttk.Treeview(panel, columns=columnas, show="headings")
-    
-    # Configurar los encabezados
+
     for col in columnas:
         tabla.heading(col, text=col)
         tabla.column(col, width=100, anchor=tkinter.CENTER)
-    
-    # Insertar los datos
-    for dato in datos:
-        tabla.insert("", tkinter.END, values=dato)
-    
-    tabla.pack(padx=10, pady=10)
+
+    tabla.pack(padx=10, pady=10)  # ¡Esto va SIEMPRE!
+
+    if not datos:
+        print("⚠️ No se encontraron datos o hubo un error en la consulta.")
+
+        label = tkinter.Label(panel, text="No se encontraron datos.", fg="red", bg="white", font=("Arial", 12))
+        label.pack(pady=5)
+        return
+
+    for fila in datos:
+        tabla.insert("", tkinter.END, values=fila)
+
     return tabla
