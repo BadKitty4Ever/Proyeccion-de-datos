@@ -6,8 +6,8 @@ from Views.formView import formulario_view
 #-------------------------------------------------------------------------------
 
 ventana = tkinter.Tk()
-ventana.title("Informe, Base de Datos")
-ventana.geometry("1000x700")
+ventana.title("✨ Registro Vehicular ✨")
+ventana.geometry("1200x700")
 
 ventana.columnconfigure(0,weight=1)
 ventana.columnconfigure(1,weight=6)

@@ -10,7 +10,7 @@ def actualizarTabla(consulta_sql, panel):
     for widget in panel.winfo_children():
         widget.destroy()
 
-    columnas = ("ID","Genero","Nombre","Placa","Color","Modelo","Hora Entrada","Hora Salida","Tarifa","Carwash")
+    columnas = ("ID","Nombre","Genero","Placa","Color","Modelo","Hora Entrada","Hora Salida","Tarifa","Carwash")
     crear_tabla(panel, columnas, datos)
 
 #__________________Crear_Tabla_____________________________________

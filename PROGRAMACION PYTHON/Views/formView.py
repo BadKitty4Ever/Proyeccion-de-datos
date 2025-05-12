@@ -15,12 +15,12 @@ def formulario_view(ventana):
     titulocolor = tkinter.Label(formulario_panel, text="Ingrese el color:")
     titulocolor.pack(pady=5)
 
-    entrycolor = tkinter.Entry(formulario_panel)
+    entrycolor = tkinter.Entry(formulario_panel,bd=1,relief="solid",highlightthickness=3,highlightbackground="lightgreen")
     entrycolor.pack(pady=5)   
 
     def funcion_boton_color():
-        respuesta = entrycolor.get()
-        actualizarTabla(f"SELECT * FROM general WHERE color = '{respuesta}'",tablas_panel)
+        respuestacolor = entrycolor.get()
+        actualizarTabla(f"SELECT * FROM general WHERE color = '{respuestacolor}'",tablas_panel)
     
     buttomcolor = tkinter.Button(formulario_panel, text="En. Color", command=funcion_boton_color)
     buttomcolor.pack(pady=5)
@@ -29,10 +29,10 @@ def formulario_view(ventana):
     titulotiempo = tkinter.Label(formulario_panel, text="Ingrese el tiempo:")
     titulotiempo.pack(pady=5)
 
-    entrytiempo1 = tkinter.Entry(formulario_panel)
+    entrytiempo1 = tkinter.Entry(formulario_panel,bd=1,relief="solid",highlightthickness=3,highlightbackground="lightgreen")
     entrytiempo1.pack(pady=5)
 
-    entrytiempo2 = tkinter.Entry(formulario_panel)
+    entrytiempo2 = tkinter.Entry(formulario_panel,bd=1,relief="solid",highlightthickness=3,highlightbackground="lightgreen")
     entrytiempo2.pack(pady=5)
 
     def funcion_boton_tiempo():
@@ -60,7 +60,7 @@ def formulario_view(ventana):
       
 
       consulta = f"SELECT * FROM general WHERE hora_entrada BETWEEN '{tiempo1}' AND '{tiempo2}'"
-      # OR hora_salida BETWEEN '{tiempo1}' AND '{tiempo2}' para calcular tambien hora de salida
+      #OR hora_salida BETWEEN '{tiempo1}' AND '{tiempo2}'"
       
       print(f"Consulta SQL generada: {consulta}")
 
@@ -68,12 +68,38 @@ def formulario_view(ventana):
 
     buttomtiempo = tkinter.Button(formulario_panel, text="En. Tiempo", command=funcion_boton_tiempo)
     buttomtiempo.pack(pady=5)
-    
+
+ #________________________________Placa_____________________________________
+
+    tituloplaca = tkinter.Label(formulario_panel, text="Ingrese la Placa:")
+    tituloplaca.pack(pady=5)
+
+    entryplaca = tkinter.Entry(formulario_panel,bd=1,relief="solid",highlightthickness=3,highlightbackground="lightgreen")
+    entryplaca.pack(pady=5)
+
+    def funcio_boton_genero():
+       respuestaplaca = entryplaca.get()
+       actualizarTabla(f"SELECT * FROM general WHERE placa = '{respuestaplaca}'",tablas_panel)
+
+    buttomplaca = tkinter.Button(formulario_panel, text="En. Placa", command=funcio_boton_genero)
+    buttomplaca.pack(pady=5) 
+
+ #_______________________________Genero______________________________________
+
+    titulogenero = tkinter.Label(formulario_panel, text="Ingrese Genero:")
+    titulogenero.pack(pady=5)
+
+    entrygenero = tkinter.Entry(formulario_panel,bd=1,relief="solid",highlightthickness=3,highlightbackground="lightgreen")
+    entrygenero.pack(pady=5)
+
+    def fucion_boton_genero():
+       respuestagenero = entrygenero.get()
+       actualizarTabla(f"SELECT * FROM general WHERE genero = '{respuestagenero}'",tablas_panel)
+
+    buttomgenero = tkinter.Button(formulario_panel,text="En. Genero",command=fucion_boton_genero)
+    buttomgenero.pack(pady=5)      
  #___________________________________________________________________________
 
     actualizarTabla(f"SELECT * FROM general",tablas_panel)
 
     return formulario_panel
-
-
-
