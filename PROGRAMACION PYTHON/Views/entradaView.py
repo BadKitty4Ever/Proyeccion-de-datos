@@ -1,6 +1,8 @@
 import tkinter
 import tkinter.messagebox as messagebox
 
+#--------------------------------------------------------------------------------
+
 def entrada_view(formulario_panel, tablas_panel, actualizarTabla):
     # Entradas
     labels_texts = ["Ingrese el color:", "Ingrese el tiempo inicio (hora):", "Ingrese el tiempo fin (hora):", "Ingrese la placa:", "Ingrese el género:"]
@@ -13,6 +15,8 @@ def entrada_view(formulario_panel, tablas_panel, actualizarTabla):
         ent.pack(pady=5)
         entries[texto] = ent
 
+#--------------------------------------------------------------------------------
+
     def boton_filtrar():
         color = entries["Ingrese el color:"].get().strip()
         tiempo_inicio = entries["Ingrese el tiempo inicio (hora):"].get().strip()
@@ -20,11 +24,14 @@ def entrada_view(formulario_panel, tablas_panel, actualizarTabla):
         placa = entries["Ingrese la placa:"].get().strip()
         genero = entries["Ingrese el género:"].get().strip()
 
-        # Armar lista de condiciones para la consulta SQL
+ #--------------------------------------------------------------------------------
+
         condiciones = []
 
         if color:
             condiciones.append(f"color = '{color}'")
+
+ #--------------------------------------------------------------------------------
 
         if tiempo_inicio and tiempo_fin:
             if not tiempo_inicio.isdigit() or not tiempo_fin.isdigit():
@@ -42,22 +49,29 @@ def entrada_view(formulario_panel, tablas_panel, actualizarTabla):
         elif tiempo_inicio or tiempo_fin:
             messagebox.showerror("❌Error", "Ambos campos de tiempo deben estar llenos")
             return
+        
+ #--------------------------------------------------------------------------------
 
         if placa:
             condiciones.append(f"placa = '{placa}'")
 
+ #--------------------------------------------------------------------------------
+
         if genero:
             condiciones.append(f"genero = '{genero}'")
 
-        # Construir consulta SQL final
+ #--------------------------------------------------------------------------------
+
         consulta = "SELECT * FROM general"
-        
+
         if condiciones:
             consulta += " WHERE " + " AND ".join(condiciones)
 
         print(f"Consulta SQL generada: {consulta}")
 
         actualizarTabla(consulta, tablas_panel)
+
+ #--------------------------------------------------------------------------------
 
     boton = tkinter.Button(formulario_panel, text="Filtrar", command=boton_filtrar)
     boton.pack(pady=10)
