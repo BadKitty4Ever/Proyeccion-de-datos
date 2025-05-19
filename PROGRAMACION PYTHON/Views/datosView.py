@@ -2,11 +2,34 @@ import tkinter
 from tkinter import ttk
 from Services.sql import conectar
 
-#______________________Actualizar_Tabla____________________________
+#__________________Estilo_de_la_tabla_________________________________
+
+def estilo_tabla():
+    style = ttk.Style()
+    style.theme_use("clam")
+
+    style.configure("EstiloMiku.Treeview.Heading",
+                    background="#00e5ff",
+                    foreground="black",
+                    font=("Arial", 10, "bold"),
+                    relief="flat")
+    
+    style.configure("EstiloMiku.Treeview",
+                    background="#ccf5ff",
+                    foreground="black",
+                    fieldbackground="#e0ffff",
+                    borderwidth=2)
+    
+    style.map("EstiloMiku.Treeview",
+              background=[("selected", "#00e5ff")],
+              foreground=[("selected", "black")])
+
+#______________________Actualizar_Tabla______________________________
 
 def actualizarTabla(consulta_sql, panel):
-    datos = conectar(consulta_sql)
+    estilo_tabla()
 
+    datos = conectar(consulta_sql)
     for widget in panel.winfo_children():
         widget.destroy()
 
@@ -16,7 +39,7 @@ def actualizarTabla(consulta_sql, panel):
 #__________________Crear_Tabla_____________________________________
 
 def crear_tabla(panel, columnas, datos):
-    tabla = ttk.Treeview(panel, columns=columnas, show="headings")
+    tabla = ttk.Treeview(panel, columns=columnas, show="headings",style="EstiloMiku.Treeview")
 
     for col in columnas:
         tabla.heading(col, text=col)

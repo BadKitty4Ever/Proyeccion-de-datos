@@ -1,0 +1,21 @@
+
+
+# ------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------
+
+gif = Image.open(r"C:\Users\josea\OneDrive\Desktop\PROGRAMACION PYTHON\download.gif")
+frames = [ImageTk.PhotoImage(frame.copy()) for frame in ImageSequence.Iterator(gif)]
+
+gif_label = Label(ventana, bd=0, bg="white")
+gif_label.place(relx=1.0, rely=1.0, anchor="se")
+
+def animar(ind):
+    frame = frames[ind]
+    gif_label.configure(image=frame)
+    ind = (ind + 1) % len(frames)
+    ventana.after(25, animar, ind)
+
+animar(0)
+
+# --------------------------------------------------------------------------------------------
