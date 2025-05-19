@@ -25,4 +25,3 @@ def conectar(consulta_sql):
     except mysql.connector.Error as err:
         print(f"💀 Error al conectarse o ejecutar la consulta: {err}")
         print(f"Error al conectarse a la base de datos: {err}")
-

@@ -27,8 +27,16 @@ sonido_entrada.play()
 
 #--------------------------------------------------------------------------------
 
+nuevo_ancho = 250
+nueva_altura = 250
+
 gif = Image.open(r"C:\Users\josea\OneDrive\Desktop\PROGRAMACION PYTHON\download.gif")
-frames = [ImageTk.PhotoImage(frame.copy()) for frame in ImageSequence.Iterator(gif)]
+
+# Redimensionar cada frame
+frames = [
+    ImageTk.PhotoImage(frame.copy().resize((nuevo_ancho, nueva_altura), Image.LANCZOS))
+    for frame in ImageSequence.Iterator(gif)
+]
 
 gif_label = Label(ventana, bd=0, bg="white")
 gif_label.place(relx=1.0, rely=1.0, anchor="se")
@@ -40,7 +48,6 @@ def animar(ind):
     ventana.after(25, animar, ind)
 
 animar(0)
-
 #--------------------------------------------------------------------------------
 
 ventana.mainloop()
