@@ -36,6 +36,8 @@ def actualizarTabla(consulta_sql, panel):
     columnas = ("ID","Nombre","Genero","Placa","Color","Modelo","Hora Entrada","Hora Salida","Tarifa","Carwash")
     crear_vista_vertical(panel, columnas, datos)
 
+    formulario_insercion(panel)
+
 #__________________Crear_Vista_Vertical______________________________
 
 def crear_vista_vertical(panel, columnas, datos):
@@ -69,3 +71,47 @@ def crear_vista_vertical(panel, columnas, datos):
             etiqueta.pack(fill="x", padx=10, pady=2)
 
     return
+
+#__________________Formulario_de_inserción______________________________
+
+def formulario_insercion(panel):
+    from tkinter import Label, Entry, Button, messagebox
+
+    campos = ["Nombre", "Genero", "Placa", "Color", "Modelo", "Hora Entrada", "Hora Salida", "Tarifa", "Carwash"]
+    entradas = {}
+
+    contenedor_form = tkinter.Frame(panel, bg="white", bd=2, relief="groove")
+    contenedor_form.pack(padx=10, pady=10, fill="x")
+
+    tkinter.Label(contenedor_form, text="📥 Insertar Nuevo Vehículo", font=("Arial", 11, "bold"), bg="white").pack(pady=5)
+
+    for campo in campos:
+        lbl = Label(contenedor_form, text=campo + ":", bg="white")
+        lbl.pack()
+        ent = Entry(contenedor_form, width=30)
+        ent.pack(pady=2)
+        entradas[campo] = ent
+
+    def insertar_datos():
+        datos = [entradas[c].get().strip() for c in campos]
+
+        if not all(datos):
+            messagebox.showerror("⚠️ Error", "¡Todos los campos son obligatorios!")
+            return
+
+        sql = f"""
+        INSERT INTO general
+        (nombre, genero, placa, color, modelo, hora_entrada, hora_salida, tarifa, carwash)
+        VALUES ('{datos[0]}', '{datos[1]}', '{datos[2]}', '{datos[3]}', '{datos[4]}',
+                '{datos[5]}', '{datos[6]}', '{datos[7]}', '{datos[8]}');
+        """
+
+        try:
+            conectar(sql)
+            messagebox.showinfo("✅ Éxito", "Datos insertados correctamente")
+            actualizarTabla("SELECT * FROM general", panel)
+        except Exception as e:
+            messagebox.showerror("💀 Error", str(e))
+
+    btn_insertar = Button(contenedor_form, text="Insertar", command=insertar_datos, bg="#00e5ff")
+    btn_insertar.pack(pady=10)

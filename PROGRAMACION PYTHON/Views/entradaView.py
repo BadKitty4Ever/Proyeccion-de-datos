@@ -76,4 +76,62 @@ def entrada_view(formulario_panel, tablas_panel, actualizarTabla):
     boton = tkinter.Button(formulario_panel, text="Filtrar", command=boton_filtrar)
     boton.pack(pady=10)
 
+ #--------------------------------------------------------------------------------
+    
+    def boton_nueva_ventana():
+        ventana_nueva = tkinter.Toplevel(formulario_panel)
+        ventana_nueva.title("Pari Pa Pa Pari Pari")
+        ventana_nueva.geometry("500x500")
+
+# P1 ----------------------------------------------------------
+        inombre = tkinter.Label(ventana_nueva,text="Nombre:")
+        inombre.pack(padx=10,pady=2)
+        enombre = tkinter.Entry(ventana_nueva,width=20)
+        enombre.pack(padx=10,pady=10)
+# P2 ----------------------------------------------------------
+        igenero = tkinter.Label(ventana_nueva,text="Genero:")
+        igenero.pack(padx=10,pady=2)
+        egenero = tkinter.Entry(ventana_nueva,width=20)
+        egenero.pack(padx=10,pady=10)
+# P3 ----------------------------------------------------------
+        iplaca = tkinter.Label(ventana_nueva,text="Placa:")
+        iplaca.pack(padx=10,pady=2)
+        eplaca= tkinter.Entry(ventana_nueva,width=20)
+        eplaca.pack(padx=10,pady=10)
+# P4 ----------------------------------------------------------
+        icolor = tkinter.Label(ventana_nueva,text="Color:")
+        icolor.pack(padx=10,pady=2)
+        ecolor = tkinter.Entry(ventana_nueva,width=20)
+        ecolor.pack(padx=10,pady=10)
+# P5 ----------------------------------------------------------
+        imodelo = tkinter.Label(ventana_nueva,text="Modelo:")
+        imodelo.pack(padx=10,pady=2)
+        emodelo = tkinter.Entry(ventana_nueva,width=20)
+        emodelo.pack(padx=10,pady=10)
+# P6 ----------------------------------------------------------
+        ihe = tkinter.Label(ventana_nueva,text="Hora Entrada:")
+        ihe.pack(padx=10,pady=2)
+        ehe = tkinter.Entry(ventana_nueva,width=20)
+        ehe.pack(padx=10,pady=10)
+# P7 ----------------------------------------------------------
+        ihs = tkinter.Label(ventana_nueva,text="Hora Salida:")
+        ihs.pack(padx=10,pady=2)
+        ehs = tkinter.Entry(ventana_nueva,width=20)
+        ehs.pack(padx=10,pady=10)
+# P8 ----------------------------------------------------------
+        itarifa = tkinter.Label(ventana_nueva,text="Tarifa:")
+        itarifa.pack(padx=10,pady=2)
+        etarifa = tkinter.Entry(ventana_nueva,width=20)
+        etarifa.pack(padx=10,pady=10)
+# P9 ----------------------------------------------------------
+        icw = tkinter.Label(ventana_nueva,text="Car Wash:")
+        icw.pack(padx=10,pady=2)
+        ecw= tkinter.Entry(ventana_nueva,width=20)
+        ecw.pack(padx=10,pady=10)
+
+
+        
+    boton_n = tkinter.Button(formulario_panel,text="Insertar Datos",command=boton_nueva_ventana)
+    boton_n.pack(pady=50,padx=50)
+
     return entries, boton
