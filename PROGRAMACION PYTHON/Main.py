@@ -27,8 +27,8 @@ sonido_entrada.play()
 
 #--------------------------------------------------------------------------------
 
-nuevo_ancho = 250
-nueva_altura = 250
+nuevo_ancho = 215
+nueva_altura = 215
 
 gif = Image.open(r"C:\Users\josea\OneDrive\Desktop\PROGRAMACION PYTHON\download.gif")
 

@@ -129,9 +129,4 @@ def entrada_view(formulario_panel, tablas_panel, actualizarTabla):
         ecw= tkinter.Entry(ventana_nueva,width=20)
         ecw.pack(padx=10,pady=10)
 
-
-        
-    boton_n = tkinter.Button(formulario_panel,text="Insertar Datos",command=boton_nueva_ventana)
-    boton_n.pack(pady=50,padx=50)
-
     return entries, boton
